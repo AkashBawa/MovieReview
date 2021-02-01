@@ -1,0 +1,38 @@
+
+POST http://localhost:3000/addmovie
+Content-Type: application/json
+
+{
+    "name" : "nEw movie"
+}
+
+###
+
+GET http://localhost:3000/get
+
+###
+POST http://localhost:3000/addreview
+Content-Type: application/json
+
+{
+    "userName" : "bawa27@gmail.com",
+    "score" : 5,
+    "movieName" : "new movie",
+    "comment" : "Good movie"
+}
+
+###
+POST  http://localhost:3000/countandaverage
+Content-Type: application/json
+
+{
+    "movieName" : "new movie"
+}
+
+###
+POST http://localhost:3000/allcomments
+Content-Type: application/json
+
+{
+    "movieName" : "new movie"
+}
