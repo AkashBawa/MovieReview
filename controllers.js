@@ -118,6 +118,7 @@ router.post('/allcomments',async(req, res)=>{
     
     return res.json({success : true, allComments : movie.reviews, asc : assending,dec :  decending })
 })
+
 module.exports = router;
 
 function schemaValidation(schema, body){
