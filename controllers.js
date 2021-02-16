@@ -3,7 +3,7 @@ const Joi = require('joi');
 const MovieList = require('./models/movie')
 
 router.get('/', (req, res)=>{
-    res.send("Hello")
+    res.send("Hello world")
 })
 
 router.get('/get',(req, res)=>{

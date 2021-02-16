@@ -3,7 +3,8 @@
 
 const cron = require('node-cron');
 const shell = require('shelljs');
-const router = require('express').Router()
+const router = require('express').Router();
+const passport = require('passport');
 
 module.exports = router;
 
@@ -45,3 +46,15 @@ router.get('/sessiontest',(req,res)=>{
         return res.send(`Page count is ${req.session.pageCount}`)
     }
 })
+
+router.post('/login', passport.authenticate('local'),(req, res)=>{  
+    res.json(req.user)
+})
+
+router.post('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook'),(req,res)=>{
+    console.log("facebook callback reached")
+    res.json({success : true})
+})
+

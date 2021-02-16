@@ -36,3 +36,21 @@ Content-Type: application/json
 {
     "movieName" : "new movie"
 }
+
+###
+POST http://localhost:3000/login HTTP/1.1
+Content-Type : application/json
+
+{
+    "username" : "aksah",
+    "password" : "123456"
+}
+
+###
+POST http://localhost:3000/auth/facebook HTTP/1.1
+Content-Type : application/json
+
+{
+    "username" : "aksah",
+    "password" : "123456"
+}

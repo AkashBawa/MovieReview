@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const morgan = require('morgan');
+const passport = require('passport');
 
+const passportFile = require('./otherWork/passport.strategy')
 const testFile = require('./otherWork/testFile');
 
 
@@ -18,7 +20,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));                        // extended true because to  get nested object in the req body
 app.use(cookieParser());
 app.use(session({secret : "Place our secret key"}));
-app.use(morgan('dev'))                                                    // short , tiny, dev, combined, common
+app.use(morgan('dev'));                                                    // short , tiny, dev, combined, common
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(controller);
 app.use(testFile);
