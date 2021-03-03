@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Joi = require('joi');
-const MovieList = require('./models/movie')
+const MovieList = require('./models/movie');
 
 router.get('/', (req, res)=>{
     res.send("Hello world")
@@ -8,7 +8,7 @@ router.get('/', (req, res)=>{
 
 router.get('/get',(req, res)=>{
     console.log("for get")
-})
+})  
 
 const movieSchemaValidator = Joi.object({
     name : Joi.string().min(1).required()
@@ -45,7 +45,7 @@ const addReviewSchema = Joi.object({
     score : Joi.number().required().min(1).max(5),
     comment : Joi.string().required(),
     movieName : Joi.string().required()
-})
+});
 
 router.post('/addreview', async(req, res)=>{
 
@@ -70,7 +70,7 @@ router.post('/addreview', async(req, res)=>{
     movie.reviews.push(req.body);
     await movie.save();
     return res.json({success : true, message : "Review saves"});
-})
+});
 
 // post request because it become difficult in parameters if movie name contain space, so name is passed in body;
 router.post('/countandaverage', async(req, res)=>{
@@ -97,7 +97,7 @@ router.post('/countandaverage', async(req, res)=>{
         return res.json({success : false, message : "Something went wrong"})
     }
     
-})
+});
 
 router.post('/allcomments',async(req, res)=>{
     
@@ -117,7 +117,7 @@ router.post('/allcomments',async(req, res)=>{
     decending.sort((x,y)=>{return y.score - x.score});
     
     return res.json({success : true, allComments : movie.reviews, asc : assending,dec :  decending })
-})
+});
 
 module.exports = router;
 
